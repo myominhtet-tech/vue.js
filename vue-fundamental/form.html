@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>vuejs</title>
+    </head>
+    <body>
+        <div id="list">
+            <h1>{{ title }}</h1>
+            <!-- can use @ instead of v-on: -->
+            <form v-on:submit.prevent="todos.push(newItem)">
+                <input type="text" v-model="newItem">
+                <button type="submit">Add Item</button>
+                <!-- <input type="text" v-model="newItem"
+                    v-on:keyup.enter="todos.push(newItem)">
+                <button v-on:click="todos.push(newItem)">Add Item</button> -->
+            </form>
+            <ol>
+                <li v-for="todo in todos">{{ todo }}</li>
+            </ol>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+           var app=new Vue({
+               el: '#list',
+               data: {
+                    title: "Todo list",
+                    newItem:'',
+                    todos: ['go shop', 'buy egg']
+               }
+           });
+        </script>
+    </body>
+</html>

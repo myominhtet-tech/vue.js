@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>vuejs</title>
+    </head>
+    <body>
+        <div id="list">
+            <h1>{{ title }}</h1>
+            <!-- can use @ instead of v-on: -->
+            <form @submit.prevent="addItem()">
+                <input type="text" v-model="newItem">
+                <button type="submit">Add Item</button>
+            </form>
+            <ol>
+                <li v-for="todo in todos">{{ todo }}</li>
+            </ol>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+           var app=new Vue({
+               el: '#list',
+               data: {
+                    title: "Todo list",
+                    newItem:'',
+                    todos: ['go shop', 'buy egg']
+               },
+               methods: {
+                //    remove ": function"
+                   addItem() {
+                    // this.todos.push(this.newItem); //using ... instead of push
+                    this.todos = [...this.todos, this.newItem]
+                    this.newItem='';
+                   }
+               }
+           });
+        </script>
+    </body>
+</html>

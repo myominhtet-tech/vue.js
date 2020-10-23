@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>vuejs</title>
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <div id="list">
+            <ul>
+                <li v-for="color in colors">{{ color }}</li>
+            </ul>
+            <ol>
+                <li v-for="user in users">{{ user.name }} live in {{
+                    user.address }}</li>
+            </ol>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+           var app=new Vue({
+               el: '#list',
+               data: {
+                    colors: ['red','green','blue','white'],
+                    users: [{name: 'mg',address:'ygn'},
+                            {name: 'hla', address: 'mdy'},
+                            {name: 'myo', address: 'gm'}
+                    ]
+               }
+           });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <div id="app">
+
+            <post v-for="(post, index) in posts" v-bind:key="index"
+                v-bind:title="post.title"
+                v-bind:content="post.content"
+                link="Click Props">
+            </post>
+            <!-- <post title="Post Title Props 1" content="Post Content Props 1"
+                link="Click Props 1">
+
+            </post> -->
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <!-- <script type="text/x-template" id="vote-template">
+            
+        </script> -->
+        <script src="props.js"></script>
+    </body>
+</html>

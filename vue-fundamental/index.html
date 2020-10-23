@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>vuejs</title>
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <div id="app">
+            {{ message }}
+        </div>
+        <div id="para">
+            <p>{{ parag1 }}</p>
+
+            <p>{{ parag2 }}</p>
+
+            <h1>{{ 1+23}}</h1>
+
+            <h2>{{ false ? 'OK' : 'Not OK' }}</h2>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                            el: '#app',
+                            data: {
+                                message: 'Hello Vue!'
+                            }
+                            });
+            var para= new Vue({
+                el:'#para',
+                data: {
+                    parag1: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime suscipit commodi dolore harum aperiam vero esse repudiandae soluta reiciendis, quidem, blanditiis iusto. Ipsam aliquam sed accusantium corporis veritatis reprehenderit placeat.',
+                    parag2: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime suscipit commodi dolore harum aperiam vero esse repudiandae soluta reiciendis, quidem, blanditiis iusto. Ipsam aliquam sed accusantium corporis veritatis reprehenderit placeat.2'
+                }
+            })
+        </script>
+    </body>
+</html>

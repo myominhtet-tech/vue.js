@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>vuejs</title>
+        <style>
+            ol {
+                list-style-type: none;
+            }
+            .done {
+                text-decoration: line-through;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="list">
+            <h1>{{ title }} ({{totalItem}})</h1>
+            <!-- can use @ instead of v-on: -->
+            <form @submit.prevent="addItem()">
+                <input type="text" v-model="newItem">
+                <!-- instead of v-bind: can use ':' -->
+                <button type="submit" :disabled="newItem.length === 0">Add Item</button>
+            </form>
+            <ol>
+                <li v-for="(todo, index) in todos">
+                    <input type="checkbox" v-model="todo.completed">
+                    <span :class="{'done' : todo.completed}">{{
+                        todo.text }}</span>
+                    <button @click="deleteItem(index)" v-if="todo.completed">Delete</button>
+                    <button v-else>Undo</button>
+
+                </li>
+            </ol>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+           var app=new Vue({
+               el: '#list',
+               data: {
+                    title: "Todo list",
+                    newItem:'',
+                    todos: [
+                        {text:'go shop', completed:true},
+                        {text:'buy egg', completed:false},
+                         ]
+               },
+               methods: {
+                //    remove ": function"
+                   addItem() {
+                    // this.todos.push(this.newItem); //using ... instead of push
+                    let item = {
+                        text: this.newItem,
+                        completed:false
+                    }
+                    this.todos = [...this.todos, item]
+                    this.newItem='';
+                   },
+                   deleteItem(index) {
+                       this.todos.splice(index,1);
+                   }
+               },
+               computed: {
+                   totalItem() {
+                       let total= this.todos.filter(function(todo){
+                           return todo.completed === false
+                       });
+                       return total.length;
+                   }
+               }
+           });
+        </script>
+    </body>
+</html>
